@@ -1,12 +1,12 @@
 \name{BoundedAntiMeanTwo, BoundedIsoMeanTwo}
 \alias{BoundedAntiMeanTwo}
 \alias{BoundedIsoMeanTwo}
-\title{Compute solution to the problem of two ordered antitonic (or isotonic) curves}
+\title{Compute solution to the problem of two ordered isotonic or antitonic curves}
 \description{See details below.}
 \usage{
-BoundedAntiMeanTwo(g1, w1, g2, w2, K1 = 1000, K2 = 400, 
-    delta = 10^(-4), errorPrec = 10, output = TRUE)
 BoundedIsoMeanTwo(g1, w1, g2, w2, K1 = 1000, K2 = 400, 
+    delta = 10^(-4), errorPrec = 10, output = TRUE)
+BoundedAntiMeanTwo(g1, w1, g2, w2, K1 = 1000, K2 = 400, 
     delta = 10^(-4), errorPrec = 10, output = TRUE)
 }
 \arguments{
@@ -17,31 +17,32 @@ BoundedIsoMeanTwo(g1, w1, g2, w2, K1 = 1000, K2 = 400,
   \item{K1}{Upper bound on number of iterations.}
   \item{K2}{Number of iterations where step length is changed from the inverse of the norm of the subgradient to 
   a \emph{diminishing} function of the norm of the subgradient.}
-  \item{delta}{Upper bound on the error, defines stopping criterion. See Table 1 in Balabdaoui et al. (2009).}
+  \item{delta}{Upper bound on the error, defines stopping criterion.}
   \item{errorPrec}{Computation of stopping criterion is expensive. Therefore, the stopping criterion is
   only evaluated at every \code{errorPrec}-th iteration of the algorithm.}
   \item{output}{Should intermediate results be output?}
 }
-\details{We consider the problem of estimating two antitonic (isotonic) regression curves \eqn{g_1^*} and \eqn{g_2^*} under the 
-constraint that \eqn{g_1^* \ge g_2^*}. Given two sets of \eqn{n} data points \eqn{g_1(x_1), \ldots, g_1(x_n)} 
-and \eqn{g_2(x_1), \ldots, g_2(x_n)} 
-that are observed at (the same) deterministic points \eqn{x_1, \ldots, x_n} with weight functions
-\eqn{w_1} and \eqn{w_2}, respectively, the estimates are obtained by 
+\details{We consider the problem of estimating two isotonic (antitonic) regression curves \eqn{g_1^\circ} and \eqn{g_2^\circ} under the 
+constraint that \eqn{g_1^\circ \le g_2^\circ}. Given two sets of \eqn{n} data points \eqn{y_1, \ldots, y_n} 
+and \eqn{z_1, \ldots, z_n} 
+that are observed at (the same) deterministic design points \eqn{x_1, \ldots, x_n} with weights
+\eqn{w^1_i} and \eqn{w^2_i}, respectively, the estimates are obtained by 
 minimizing the Least Squares criterion 
 
-\deqn{L(f_1, f_2) = \sum_{i=1}^n (g_1(x_i) - f_1(x_i))^2 w_1(x_i)+ \sum_{i=1}^n (g_2(x_i) - f_2(x_i))^2 w_2(x_i)}
+\deqn{L(a, b) = \sum_{i=1}^n (y_i - a_i)^2 w^1_i + \sum_{i=1}^n (z_i - b_i)^2 w^2_i}
 
-over the class of pairs of functions \eqn{(f_1, f_2)} such that \eqn{f_1} and \eqn{f_2} are antitonic and 
-\eqn{f_1(x_i) \ge f_2(x_i)} for all \eqn{i = {1, \ldots, n}}. The estimates are computed with an projected 
+over the class of pairs of vectors \eqn{(a, b)} such that \eqn{a} and \eqn{b} are isotonic (antitonic) and 
+\eqn{a_i \le b_i} for all \eqn{i = {1, \ldots, n}}. The estimates are computed with a projected 
 subgradient algorithm where the projection is calculated using a suitable version of the pool-adjacent-violaters 
 algorithm (PAVA).
 
+The algorithm is implemented for antitonic curves in the function \code{BoundedAntiMeanTwo}.
 The function \code{BoundedIsoMeanTwo} solves the same problem for isotonic curves, by simply invoking 
 \code{BoundedAntiMeanTwo} and suitably flipping some of the arguments.
 }
 \value{
-  \item{g1}{The estimated function \eqn{g_1^*}.}
-  \item{g2}{The estimated function \eqn{g_2^*}.}
+  \item{g1}{The estimated function \eqn{\hat g_1^\circ}.}
+  \item{g2}{The estimated function \eqn{\hat g_2^\circ}.}
   \item{L}{Value of the least squares criterion at the minimum.}
   \item{error}{Value of error.}
   \item{k}{Number of iterations performed.}
@@ -49,7 +50,7 @@ The function \code{BoundedIsoMeanTwo} solves the same problem for isotonic curve
 }
 \references{
 Balabdaoui, F., Rufibach, K., Santambrogio, F. (2009).
-\emph{Least squares estimation of two ordered antitonic regression curves.}
+\emph{Least squares estimation of two ordered monotone regression curves.}
 Preprint.
 }
 \author{

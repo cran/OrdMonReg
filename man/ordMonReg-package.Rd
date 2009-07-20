@@ -4,28 +4,28 @@
 \docType{package}
 \title{Compute least squares estimates of one bounded or two ordered antitonic regression curves}
 \description{
-We consider the problem of estimating two antitonic regression curves \eqn{g_1^*} and \eqn{g_2^*} under the 
-constraint that \eqn{g_1^* \ge g_2^*}. Given two sets of \eqn{n} data points \eqn{g_1(x_1), \ldots, g_1(x_n)} 
-and \eqn{g_2(x_1), \ldots, g_2(x_n)} 
-that are observed at (the same) deterministic points \eqn{x_1, \ldots, x_n}, the estimates are obtained by 
+We consider the problem of estimating two isotonic regression curves \eqn{g^\circ_1} and \eqn{g^\circ_2} under the 
+constraint that \eqn{g^\circ_1 \le g^\circ_2}. Given two sets of \eqn{n} data points \eqn{y_1, \ldots, y_n} 
+and \eqn{z_1, \ldots, z_n} 
+that are observed at (the same) deterministic design points \eqn{x_1, \ldots, x_n}, the estimates are obtained by 
 minimizing the Least Squares criterion 
 
-\deqn{L(f_1, f_2) = \sum_{i=1}^n (g_1(x_i) - f_1(x_i))^2 w_1(x_i)+ \sum_{i=1}^n (g_2(x_i) - f_2(x_i))^2 w_2(x_i)}
+\deqn{L(a, b) = \sum_{i=1}^n (y_i - a_i)^2 w^1(x_i) + \sum_{i=1}^n (z_i - b_i)^2 w^2(x_i)}
 
-over the class of pairs of functions \eqn{(f_1, f_2)} such that \eqn{f_1} and \eqn{f_2} are antitonic and 
-\eqn{f_1(x_i) \ge f_2(x_i)} for all \eqn{i = {1, \ldots, n}}. The estimates are computed with an projected 
+over the class of pairs of vectors \eqn{(a, b)} such that \eqn{a} and \eqn{b} are isotonic and 
+\eqn{a_i \le b_i} for all \eqn{i = {1, \ldots, n}}. The estimates are computed with a projected 
 subgradient algorithm where the projection is calculated using a suitable version of the pool-adjacent-violaters 
 algorithm (PAVA).
 
-Additionally, functions to solve the bounded antitonic regression problem described in Barlow et al. (1972, p. 57)
+Additionally, functions to solve the bounded isotonic regression problem described in Barlow et al. (1972, p. 57)
 are provided.
 } 
 \details{
 \tabular{ll}{
 Package: \tab OrdMonReg\cr
 Type: \tab Package\cr
-Version: \tab 1.0.0\cr
-Date: \tab 2009-04-10\cr
+Version: \tab 1.0.1\cr
+Date: \tab 2009-07-20\cr
 License: \tab GPL (>=2) \cr
 }
 }
@@ -41,7 +41,7 @@ Filippo Santambrogio \email{filippo@ceremade.dauphine.fr}
 }
 \references{
 Balabdaoui, F., Rufibach, K., Santambrogio, F. (2009).
-\emph{Least squares estimation of two ordered antitonic regression curves.}
+\emph{Least squares estimation of two ordered monotone regression curves.}
 Preprint.
 
 Barlow, R. E., Bartholomew, D. J., Bremner, J. M., Brunk, H. D. (1972).

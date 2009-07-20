@@ -1,7 +1,7 @@
 \name{LSfunctional}
 \alias{LSfunctional}
-\title{Compute least squares criterion for two ordered antitonic regression functions}
-\description{Computes the value of the least squares criterion in the problem of two ordered antitonic
+\title{Compute least squares criterion for two ordered isotonic regression functions}
+\description{Computes the value of the least squares criterion in the problem of two ordered isotonic
 regression functions.}
 \usage{LSfunctional(f1, g1, w1, f2, g2, w2)}
 \arguments{
@@ -14,11 +14,11 @@ regression functions.}
 }
 \details{This function simply computes for the above vectors
 
-\deqn{L(f_1, f_2) \ = \ \sum_{x \in X} w_1(x)(f_1(x) - g_1(x))^2 + \sum_{x \in X} w_2(x)(f_2(x) - g_2(x))^2.}
+\deqn{L(f1, f2) \ = \ \sum_{i=1}^n w1_i(f1_i - g1_i)^2 + \sum_{i=1}^n w2_i(f2_i - g2_i)^2.}
 }
 \references{
 Balabdaoui, F., Rufibach, K., Santambrogio, F. (2009).
-\emph{Least squares estimation of two ordered antitonic regression curves.}
+\emph{Least squares estimation of two ordered monotone regression curves.}
 Preprint.
 }
 \author{

@@ -17,13 +17,12 @@ material tests.}
 \source{The data was taken from Shim and Mohr (2009).}
 \references{
 Balabdaoui, F., Rufibach, K., Santambrogio, F. (2009).
-\emph{Least squares estimation of two ordered antitonic regression curves.}
+\emph{Least squares estimation of two ordered monotone regression curves.}
 Preprint.
 
 Shim, J. and Mohr, D. (2009).
-\emph{Using split Hopkinson pressure bars to perform large strain compression tests on polyurea at low, 
-intermediate and high strain rates.}
-International Journal of Impact Engineering, to appear.
+Using split Hopkinson pressure bars to perform large strain compression tests on polyurea at low, intermediate and high strain rates.
+\emph{International Journal of Impact Engineering}, \bold{36(9)}, 1116--1127. 
 }
 \seealso{See the examples in \code{\link{BoundedIsoMeanTwo}} for the analysis of this data.}
 \keyword{datasets}

@@ -1,12 +1,13 @@
 \name{BoundedAntiMean, BoundedIsoMean}
 \alias{BoundedIsoMean}
 \alias{BoundedAntiMean}
-\title{Compute least square estimate of an anti- or isotonic function, bounded below and above by fixed functions}
+\title{Compute least square estimate of an iso- or antitonic function, bounded below and above by fixed functions}
 \description{This function computes the bounded least squares isotonic regression estimate, where the bounds
 are two functions such that the estimate is above the lower and below the upper function. To find the solution, we
 use the pool-adjacent-violaters algorithm for a suitable set function M, as discussed in Balabdaoui et al. (2009).
 The problem was initially posed in Barlow et al. (1972), including a remark (on p. 57) that the PAVA can be used to solve
-it. However, a formal proof is only given in Balabdaoui et al. (2009).
+it. However, a formal proof is not given in Barlow et al. (1972). A short note detailing this proof
+is available from the authors of Balabdaoui et al. (2009) on request.
 }
 \usage{
 BoundedIsoMean(y, w, a = NA, b = NA)
@@ -17,27 +18,28 @@ BoundedAntiMean(y, w, a = NA, b = NA)}
   \item{a}{Vector in \eqn{R^n} that gives lower bound.}
   \item{b}{Vector in \eqn{R^n} that gives upper bound.}
 }
-\details{The \emph{bounded isotonic regression problem} is given by: For \eqn{X = \{x_1 \le \ldots \le x_n\}} 
-let \eqn{g(x_i), i = 1, \ldots, n} be measurements of some quantity, with true mean \eqn{f(x)}.
-The goal is to estimate \eqn{f} using least squares, i.e. to minimize
+\details{The \emph{bounded isotonic regression problem} is given by: For \eqn{x_1 \le \ldots \le x_n} 
+let \eqn{y_i, i = 1, \ldots, n} be measurements of some quantity at the \eqn{x_i}'s, with true mean function 
+\eqn{g^\circ(x)}.
+The goal is to estimate \eqn{g^\circ} using least squares, i.e. to minimize
 
-\deqn{L(f) = \sum_{x \in X} w(x)(f(x) - g(x))^2}
+\deqn{L(a) = \sum_{i=1}^n w_i(y_i - a_i)^2}
 
-over all functions \eqn{f} that are isotonic and satisfy 
+over the class of vectors \eqn{a} that are isotonic and satisfy 
 
-\deqn{a(x) \le f(x) \le b(x) \ \ \mathrm{for} \ \ \mathrm{all} \ \ x \in X}
+\deqn{a_{L, i} \le a_i \le a_{U, i} \ \ \mathrm{for} \ \ \mathrm{all} \ \ i = 1, \ldots, n}
 
-and two \emph{fixed} isotonic functions \eqn{a} and \eqn{b}. 
+and two \emph{fixed} isotonic vectors \eqn{a_L} and \eqn{a_U}. 
 This problem can be solved using a suitable modification of the pool-adjacent-violaters algorithm, see
 Barlow et al. (1972, p. 57) and Balabdaoui et al. (2009).
 
 The function \code{BoundedAntiMean} solves the same problem for antitonic curves, by simply invoking \code{BoundedIsoMean}
 flipping some of the arguments.
 }
-\value{The bounded isotonic (antitonic) estimate \eqn{(\hat f(x))_{x \in X}}.}
+\value{The bounded isotonic (antitonic) estimate \eqn{(\hat g^\circ)_{i=1}^n}.}
 \references{
 Balabdaoui, F., Rufibach, K., Santambrogio, F. (2009).
-\emph{Least squares estimation of two ordered antitonic regression curves.}
+\emph{Least squares estimation of two ordered monotone regression curves.}
 Preprint.
 
 Barlow, R. E., Bartholomew, D. J., Bremner, J. M., Brunk, H. D. (1972).

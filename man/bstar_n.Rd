@@ -20,7 +20,7 @@ bstar_n(g1, w1, g2, w2)
 \value{Values of \eqn{a_1^*} and \eqn{b_n^*} are returned.}
 \references{
 Balabdaoui, F., Rufibach, K., Santambrogio, F. (2009).
-\emph{Least squares estimation of two ordered antitonic regression curves.}
+\emph{Least squares estimation of two ordered monotone regression curves.}
 Preprint.
 }
 \author{

@@ -19,7 +19,7 @@ see Balabdaoui et al. (2009) for details.
 \value{The bounded weighted average is returned.}
 \references{
 Balabdaoui, F., Rufibach, K., Santambrogio, F. (2009).
-\emph{Least squares estimation of two ordered antitonic regression curves.}
+\emph{Least squares estimation of two ordered monotone regression curves.}
 Preprint.
 }
 \author{
