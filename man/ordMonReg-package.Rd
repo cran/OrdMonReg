@@ -10,12 +10,12 @@ and \eqn{z_1, \ldots, z_n}
 that are observed at (the same) deterministic design points \eqn{x_1, \ldots, x_n}, the estimates are obtained by 
 minimizing the Least Squares criterion 
 
-\deqn{L(a, b) = \sum_{i=1}^n (y_i - a_i)^2 w^1(x_i) + \sum_{i=1}^n (z_i - b_i)^2 w^2(x_i)}
+\deqn{L(a, b) = \sum_{i=1}^n (y_i - a_i)^2 w_1(x_i) + \sum_{i=1}^n (z_i - b_i)^2 w_2(x_i)}
 
 over the class of pairs of vectors \eqn{(a, b)} such that \eqn{a} and \eqn{b} are isotonic and 
-\eqn{a_i \le b_i} for all \eqn{i = {1, \ldots, n}}. The estimates are computed with a projected 
-subgradient algorithm where the projection is calculated using a suitable version of the pool-adjacent-violaters 
-algorithm (PAVA).
+\eqn{a_i \le b_i} for all \eqn{i = {1, \ldots, n}}. We offer two different approaches to compute the estimates: a 
+projected subgradient algorithm where the projection is calculated using a pool-adjacent-violaters algorithm (PAVA) 
+as well as Dykstra's cyclical projection algorithm..
 
 Additionally, functions to solve the bounded isotonic regression problem described in Barlow et al. (1972, p. 57)
 are provided.
@@ -24,8 +24,8 @@ are provided.
 \tabular{ll}{
 Package: \tab OrdMonReg\cr
 Type: \tab Package\cr
-Version: \tab 1.0.1\cr
-Date: \tab 2009-07-20\cr
+Version: \tab 1.0.2\cr
+Date: \tab 2009-10-15\cr
 License: \tab GPL (>=2) \cr
 }
 }
@@ -47,6 +47,10 @@ Preprint.
 Barlow, R. E., Bartholomew, D. J., Bremner, J. M., Brunk, H. D. (1972).
 \emph{Statistical inference under order restrictions. The theory and application of isotonic regression}.
 John Wiley and Sons, London - New York - Sydney.
+
+Dykstra, R.L. (1983).
+An Algorithm for Restricted Least Squares Regression.
+\emph{J. Amer. Statist. Assoc.}, \bold{78}, 837--842.
 }
 \keyword{regression}
 \keyword{nonparametric}

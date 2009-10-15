@@ -1,4 +1,4 @@
-`BoundedIsoMean` <-
+BoundedIsoMean <-
 function (y, w, a = NA, b = NA) 
 {
     n <- length(y)

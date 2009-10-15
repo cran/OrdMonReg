@@ -1,4 +1,4 @@
-`astar_1` <-
+astar_1 <-
 function (g1, w1, g2, w2) 
 {
     n <- length(g1)

@@ -1,4 +1,4 @@
-`MA` <-
+MA <-
 function (g, w, A = NA, a, b) 
 {
     if (max(is.na(A)) == TRUE) {

@@ -22,14 +22,15 @@ BoundedAntiMeanTwo(g1, w1, g2, w2, K1 = 1000, K2 = 400,
   only evaluated at every \code{errorPrec}-th iteration of the algorithm.}
   \item{output}{Should intermediate results be output?}
 }
-\details{We consider the problem of estimating two isotonic (antitonic) regression curves \eqn{g_1^\circ} and \eqn{g_2^\circ} under the 
+\details{We consider the problem of estimating two isotonic (antitonic) regression curves \eqn{g_1^\circ} and 
+\eqn{g_2^\circ} under the 
 constraint that \eqn{g_1^\circ \le g_2^\circ}. Given two sets of \eqn{n} data points \eqn{y_1, \ldots, y_n} 
 and \eqn{z_1, \ldots, z_n} 
 that are observed at (the same) deterministic design points \eqn{x_1, \ldots, x_n} with weights
-\eqn{w^1_i} and \eqn{w^2_i}, respectively, the estimates are obtained by 
+\eqn{w_{1,i}} and \eqn{w_{2,i}}, respectively, the estimates are obtained by 
 minimizing the Least Squares criterion 
 
-\deqn{L(a, b) = \sum_{i=1}^n (y_i - a_i)^2 w^1_i + \sum_{i=1}^n (z_i - b_i)^2 w^2_i}
+\deqn{L_2(a, b) = \sum_{i=1}^n (y_i - a_i)^2 w_{1,i} + \sum_{i=1}^n (z_i - b_i)^2 w_{2,i}}
 
 over the class of pairs of vectors \eqn{(a, b)} such that \eqn{a} and \eqn{b} are isotonic (antitonic) and 
 \eqn{a_i \le b_i} for all \eqn{i = {1, \ldots, n}}. The estimates are computed with a projected 
@@ -93,20 +94,33 @@ w2 <- w2 / sum(w2)
 ## --------------------------------------------------------
 ## compute estimates
 ## --------------------------------------------------------
-res <- BoundedAntiMeanTwo(g1, w1, g2, w2, errorPrec = 20)
+shor <- BoundedAntiMeanTwo(g1, w1, g2, w2, errorPrec = 20, 
+    delta = 10^(-10))
     
 ## corresponding isotonic problem
-res2 <- BoundedIsoMeanTwo(-g1, w1, -g2, w2, errorPrec = 20)
+shor2 <- BoundedIsoMeanTwo(-g2, w2, -g1, w1, errorPrec = 20, 
+    delta = 10^(-10))
     
 ## the following vectors are equal
-res$g1 - -res2$g2    
-res$g2 - -res2$g1
+shor$g1 - -shor2$g2    
+shor$g2 - -shor2$g1
         
+## --------------------------------------------------------
+## for comparison, compute estimates via cyclical projection
+## algorithm due to Dykstra (1983) (isotonic problem)
+## --------------------------------------------------------
+dykstra1 <- BoundedIsoMeanTwoDykstra(-g2, w2, -g1, w1, 
+    delta = 10^(-10))
+
+## the following vectors are equal
+shor2$g1 - dykstra1$g1
+shor2$g2 - dykstra1$g2
+
 ## --------------------------------------------------------
 ## Checking of solution
 ## --------------------------------------------------------
-# This compares the first component of res$g1 with a^*_1:
-c(res$g1[1], astar_1(g1, w1, g2, w2))
+# This compares the first component of shor$g1 with a^*_1:
+c(shor$g1[1], astar_1(g1, w1, g2, w2))
 
 ## --------------------------------------------------------
 ## plot original functions and estimates
@@ -114,11 +128,11 @@ c(res$g1[1], astar_1(g1, w1, g2, w2))
 par(mfrow = c(1, 1), mar = c(4.5, 4, 3, 0.5))
 plot(x, g1, col = 2, main = "Original observations and estimates in problem 
 two ordered antitonic regression functions", xlim = c(0, max(x)), ylim = 
-range(c(res$g1, res$g2, g1, g2)), xlab = expression(x), 
+range(c(shor$g1, shor$g2, g1, g2)), xlab = expression(x), 
 ylab = "measurements and estimates")
 points(x, g2, col = 3)
-lines(x, res$g1 + 0.01, col = 2, type = 's', lwd = 2)
-lines(x, res$g2 - 0.01, col = 3, type = 's', lwd = 2)
+lines(x, shor$g1 + 0.01, col = 2, type = 's', lwd = 2)
+lines(x, shor$g2 - 0.01, col = 3, type = 's', lwd = 2)
 legend("bottomleft", c(expression("upper estimated function g"[1]*"*"), 
     expression("lower estimated function g"[2]*"*")), lty = 1, col = 2:3, 
     lwd = 2, bty = "n")
@@ -132,11 +146,6 @@ legend("bottomleft", c(expression("upper estimated function g"[1]*"*"),
 ## input data
 ## --------------------------------------------------------
 data(mechIng)
-
-## for quick analysis only use randomly chosen 200 observations
-set.seed(23041977)
-mechIng <- mechIng[sort(sample(1:dim(mechIng)[1])[1:200]), ]
-
 x <- mechIng$x
 n <- length(x)
 g1 <- mechIng$g1
@@ -151,16 +160,17 @@ g1_pava <- BoundedIsoMean(y = g1, w = w1, a = NA, b = NA)
 g2_pava <- BoundedIsoMean(y = g2, w = w2, a = NA, b = NA)
 
 ## --------------------------------------------------------
-## compute estimates
+## compute estimates via cyclical projection algorithm due to
+## Dysktra (1983)
 ## --------------------------------------------------------
-res1 <- BoundedIsoMeanTwo(g1, w1, g2, w2, K1 = 1000, K2 = 400, 
-    delta = 10^-4, errorPrec = 20, output = TRUE)
-
+dykstra1 <- BoundedIsoMeanTwoDykstra(g1, w1, g2, w2, 
+    delta = 10^-10, output = TRUE)
+    
 ## --------------------------------------------------------
 ## compute smoothed versions
 ## --------------------------------------------------------
-g1_mon <- res1$g1
-g2_mon <- res1$g2   
+g1_mon <- dykstra1$g1
+g2_mon <- dykstra1$g2   
 
 kernel <- function(x, X, h, Y){
     tmp <- dnorm((x - X) / h) 

@@ -1,4 +1,4 @@
-`Subgradient` <-
+Subgradient <-
 function (b, g1, w1, g2, w2, B, Gsi) 
 {
     n <- length(g1)

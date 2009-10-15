@@ -1,4 +1,4 @@
-`BoundedAntiMeanTwo` <-
+BoundedAntiMeanTwo <-
 function (g1, w1, g2, w2, K1 = 1000, K2 = 400, delta = 10^(-4), 
     errorPrec = 10, output = TRUE) 
 {
@@ -46,12 +46,14 @@ function (g1, w1, g2, w2, K1 = 1000, K2 = 400, delta = 10^(-4),
                 n))
             error <- max(abs(b_old - BoundedAntiMean(g2, w2, 
                 a = rep(-Inf, n), b = a)))
+            L <- LSfunctional(a, g1, w1, b_old, g2, w2)
         }
         psi_new <- ""
         if (output == TRUE) {
-            print(paste("k = ", k, " / tau = ", round(t_old, 
-                6), " / Error = ", round(error, 5), " / norm subgradient = ", 
-                round(norm_grad_new, 4), sep = ""))
+            print(paste("k = ", k, " / tau = ", disp(t_old, 4), 
+                " / Error = ", disp(error, -log10(delta)), " / norm subgradient = ", 
+                disp(norm_grad_new, 4), " / LS = ", disp(L, 4), 
+                sep = ""))
         }
     }
     a_old <- BoundedAntiMean(y = g1, w = w1, a = b_old, b = rep(Inf, 
