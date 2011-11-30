@@ -27,11 +27,11 @@ Preprint.
 Fadoua Balabdaoui \email{fadoua@ceremade.dauphine.fr}
 \cr \url{http://www.ceremade.dauphine.fr/~fadoua}
 
-Kaspar Rufibach (maintainer) \email{kaspar.rufibach@ifspm.uzh.ch}
-\cr \url{http://www.biostat.uzh.ch/aboutus/people/rufibach.html}
+Kaspar Rufibach (maintainer) \email{kaspar.rufibach@gmail.com}
+\cr \url{http://www.kasparrufibach.ch}
 
-Filippo Santambrogio \email{filippo@ceremade.dauphine.fr}
-\cr \url{http://www.ceremade.dauphine.fr/~filippo}
+Filippo Santambrogio \email{filippo.santambrogio@math.u-psud.fr }
+\cr \url{http://www.math.u-psud.fr/~santambr/}
 }
 \seealso{This function is used by \code{\link{BoundedAntiMeanTwo}}.}
 \keyword{regression}

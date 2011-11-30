@@ -1,0 +1,17 @@
+## which functions shall be accessible by the users?
+export(
+astar_1,
+BoundedAntiMean,
+BoundedAntiMeanTwo,
+BoundedIsoMean,
+BoundedIsoMeanTwo,
+BoundedIsoMeanTwoDykstra,
+bstar_n,
+disp,
+LSfunctional,
+MA,
+minK1,
+minK2,
+minK3,
+Subgradient)
+

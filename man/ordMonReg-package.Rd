@@ -24,8 +24,8 @@ are provided.
 \tabular{ll}{
 Package: \tab OrdMonReg\cr
 Type: \tab Package\cr
-Version: \tab 1.0.2\cr
-Date: \tab 2009-10-15\cr
+Version: \tab 1.0.3\cr
+Date: \tab 2011-11-30\cr
 License: \tab GPL (>=2) \cr
 }
 }
@@ -33,11 +33,11 @@ License: \tab GPL (>=2) \cr
 Fadoua Balabdaoui \email{fadoua@ceremade.dauphine.fr}
 \cr \url{http://www.ceremade.dauphine.fr/~fadoua}
 
-Kaspar Rufibach (maintainer) \email{kaspar.rufibach@ifspm.uzh.ch}
-\cr \url{http://www.biostat.uzh.ch/aboutus/people/rufibach.html}
+Kaspar Rufibach (maintainer) \email{kaspar.rufibach@gmail.com}
+\cr \url{http://www.kasparrufibach.ch}
 
-Filippo Santambrogio \email{filippo@ceremade.dauphine.fr}
-\cr \url{http://www.ceremade.dauphine.fr/~filippo}
+Filippo Santambrogio \email{filippo.santambrogio@math.u-psud.fr }
+\cr \url{http://www.math.u-psud.fr/~santambr/}
 }
 \references{
 Balabdaoui, F., Rufibach, K., Santambrogio, F. (2009).

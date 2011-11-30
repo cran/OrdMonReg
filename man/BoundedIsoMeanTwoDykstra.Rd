@@ -44,11 +44,11 @@ An Algorithm for Restricted Least Squares Regression.
 Fadoua Balabdaoui \email{fadoua@ceremade.dauphine.fr}
 \cr \url{http://www.ceremade.dauphine.fr/~fadoua}
 
-Kaspar Rufibach (maintainer) \email{kaspar.rufibach@ifspm.uzh.ch}
-\cr \url{http://www.biostat.uzh.ch/aboutus/people/rufibach.html}
+Kaspar Rufibach (maintainer) \email{kaspar.rufibach@gmail.com}
+\cr \url{http://www.kasparrufibach.ch}
 
-Filippo Santambrogio \email{filippo@ceremade.dauphine.fr}
-\cr \url{http://www.ceremade.dauphine.fr/~filippo}
+Filippo Santambrogio \email{filippo.santambrogio@math.u-psud.fr }
+\cr \url{http://www.math.u-psud.fr/~santambr/}
 }
 \seealso{The functions \code{\link{BoundedAntiMean}} and \code{\link{BoundedIsoMean}} for the problem of 
 estimating \emph{one} antitonic (isotonic) regression

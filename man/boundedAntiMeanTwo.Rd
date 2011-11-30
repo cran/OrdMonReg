@@ -58,11 +58,11 @@ Preprint.
 Fadoua Balabdaoui \email{fadoua@ceremade.dauphine.fr}
 \cr \url{http://www.ceremade.dauphine.fr/~fadoua}
 
-Kaspar Rufibach (maintainer) \email{kaspar.rufibach@ifspm.uzh.ch}
-\cr \url{http://www.biostat.uzh.ch/aboutus/people/rufibach.html}
+Kaspar Rufibach (maintainer) \email{kaspar.rufibach@gmail.com}
+\cr \url{http://www.kasparrufibach.ch}
 
-Filippo Santambrogio \email{filippo@ceremade.dauphine.fr}
-\cr \url{http://www.ceremade.dauphine.fr/~filippo}
+Filippo Santambrogio \email{filippo.santambrogio@math.u-psud.fr }
+\cr \url{http://www.math.u-psud.fr/~santambr/}
 }
 \seealso{The functions \code{\link{BoundedAntiMean}} and \code{\link{BoundedIsoMean}} for the problem of 
 estimating \emph{one} antitonic (isotonic) regression
@@ -210,7 +210,7 @@ points(x, g1, col = grey(0.3), pch = 20, cex = 0.8)
 points(x, g2, col = grey(0.6), pch = 20, cex = 0.8)
 lines(x, g1_smooth + 0.1, col = 2, type = 's', lwd = 3)
 lines(x, g2_smooth - 0.1, col = 3, type = 's', lwd = 3)
-legend(0.2, 10, c(expression("lower isotonic smoothed function "*tilde(g)[1]*"*"), 
+legend(0.2, 10, c(expression("upper isotonic smoothed function "*tilde(g)[1]*"*"), 
     expression("lower isotonic smoothed function "*tilde(g)[2]*"*")), 
     lty = 1, col = 2:3, lwd = 3, bty = "n")
 
